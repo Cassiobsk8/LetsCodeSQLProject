@@ -107,6 +107,92 @@ public class GUIHandler
     }
 
     //Parte do Igor
+    
+    private static void showSaleMenu()
+    {
+        System.out.println("Opções:");
+        System.out.println("1 - Cadastrar venda");
+        System.out.println("2 - Cancelar Venda Recorrente");
+        int option = scanner.nextInt();
+        switch (option)
+        {
+            case 1:
+                System.out.println("Digite o id da empresa:");
+                int companyId = scanner.nextInt();
+                System.out.println("Digite o id do produto:");
+                int productId = scanner.nextInt();
+                System.out.println("Digite o valor da compra:");
+                float value = scanner.nextFloat();
+                System.out.println("Digite o tipo da compra (SERVIÇOS RECORRENTES, LINX PAY, ETC...):");
+                String type = scanner.next();
+
+                SQLHandler.executeSQL("INSERT INTO vendas (idEmpresa, idProduto, dataCompra, valorNegociado, tipoCompra) VALUES (" + companyId + ", " + productId + ", " + LocalDate.now().toString() + ", " + value + ", '" + type + "')");
+                break;
+            case 2:
+                System.out.println("Digite o id da compra:");
+                int orderId = scanner.nextInt();
+                SQLHandler.executeSQL("DELETE FROM vendas WHERE id = " + orderId);
+                break;
+        }
+    }
+
+    private static void showProductMenu()
+    {
+        System.out.println("Opções:");
+        System.out.println("1 - Cadastrar produto");
+        System.out.println("2 - Editar nome do produto");
+        int option = scanner.nextInt();
+        switch (option)
+        {
+            case 1:
+                System.out.println("Digite o nome do produto:");
+                String name = scanner.next();
+                System.out.println("Digite a vertical do produto:");
+                String vertical = scanner.next();
+                System.out.println("Digite o Valor Base do produto:");
+                float value = scanner.nextFloat();
+                System.out.println("Digite a Descrição do produto:");
+                String description = scanner.next();
+                SQLHandler.executeSQL("INSERT INTO infoproduto (produto,vertical,valorBase,DescricaoItem) VALUES ('" + name + "', '" + vertical + "', " + value + ", '" + description + "')");
+                break;
+            case 2:
+                System.out.println("Digite o id do produto:");
+                int id = scanner.nextInt();
+                System.out.println("Digite o nome do produto:");
+                name = scanner.next();
+                SQLHandler.executeSQL("UPDATE infoproduto SET produto = '" + name + "' WHERE id = " + id);
+                break;
+        }
+    }
+
+    private static void showCompanyMenu()
+    {
+        System.out.println("Opções:");
+        System.out.println("1 - Cadastrar empresa");
+        System.out.println("2 - Editar cnpj da empresa");
+        int option = scanner.nextInt();
+        switch (option)
+        {
+            case 1:
+                System.out.println("Digite o nome da empresa:");
+                String name = scanner.next();
+                System.out.println("Digite o CNPJ da empresa:");
+                String cnpj = scanner.next();
+                System.out.println("Digite a cidade da empresa:");
+                String city = scanner.next();
+                System.out.println("Digite o estado da empresa:");
+                String state = scanner.next();
+                SQLHandler.executeSQL("INSERT INTO infoEmpresa(empresa,cnpj,cidade,UF) VALUES ('" + name + "', '" + cnpj + "', '" + city + "', '" + state + "')");
+                break;
+            case 2:
+                System.out.println("Digite o id da empresa:");
+                int id = scanner.nextInt();
+                System.out.println("Digite o CNPJ da empresa:");
+                cnpj = scanner.next();
+                SQLHandler.executeSQL("UPDATE infoEmpresa SET cnpj = '" + cnpj + "' WHERE id = " + id);
+                break;
+        }
+    }
 
 
 }
