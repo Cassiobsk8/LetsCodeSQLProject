@@ -1,10 +1,11 @@
 # LetsCodeSQLProject
 Projeto de miniCRM desenvolvido no curso de JAVA e MySQL ministrado por LetsCode.
 
+Projeto de miniCRM desenvolvido no curso de JAVA e MySQL ministrado por LetsCode.
+
 Diagrama:
 
-
-
+![image](https://user-images.githubusercontent.com/54718961/168173439-cb7a3770-993a-43c1-87b0-92a229158742.png)
 
 
 
@@ -30,33 +31,22 @@ Opções:
 
 
 table #1 - Info empresa
-create table infoEmpresa(
-id
 Empresa
 CNPJ
 Cidade
 UF
-);
-
 
 
 table #2 - Info produtos 
-create table infoProdutos(
-id
 produto
 vertical
 Valor base
 Descricao item
-);
 
 
-table #3 - Info produtos &  Info empresa
-create table vendas (
-id
-id empresa
-id produto
+table #3 - Info Vendas
 data compra
 valor negociado
 tipo compra
-);
-![image](https://user-images.githubusercontent.com/54718961/167992691-c221290a-a572-4af9-8873-28a3b25cf5f0.png)
+
+
